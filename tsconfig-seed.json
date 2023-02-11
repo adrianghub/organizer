@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig",
+  "files": ["seed.ts"],
+  "compilerOptions": {
+    "module": "CommonJS"
+  }
+}

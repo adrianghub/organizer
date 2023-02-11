@@ -14,10 +14,12 @@ model User {
   id        String    @id @default(uuid())
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+ 
   email     String    @unique
   password  String
   firstName String?
   lastName  String?
+ 
   projects  Project[]
   tasks     Task[]
 }
@@ -40,12 +42,6 @@ model Project {
   @@index([ownerId, id])
 }
 
-enum TASK_STATUS {
-  NOT_STARTED
-  STARTED
-  COMPLETED
-}
-
 model Task {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
@@ -65,4 +61,10 @@ model Task {
   deleted Boolean   @default(false)
 
   @@index([ownerId])
+}
+
+enum TASK_STATUS {
+  NOT_STARTED
+  STARTED
+  COMPLETED
 }
