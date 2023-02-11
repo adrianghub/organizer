@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  [data-nextjs-scroll-focus-boundary] {
+    display: contents;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.random-mesh {
+  background-image: radial-gradient(
+      at 92% 69%,
+      hsla(219, 79%, 68%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 50% 77%, hsla(257, 63%, 79%, 1) 0px, transparent 50%),
+    radial-gradient(at 99% 3%, hsla(189, 78%, 70%, 1) 0px, transparent 50%),
+    radial-gradient(at 61% 68%, hsla(180, 86%, 76%, 1) 0px, transparent 50%),
+    radial-gradient(at 85% 94%, hsla(102, 65%, 74%, 1) 0px, transparent 50%),
+    radial-gradient(at 67% 93%, hsla(9, 78%, 74%, 1) 0px, transparent 50%),
+    radial-gradient(at 43% 0%, hsla(211, 67%, 74%, 1) 0px, transparent 50%);
+}
+
+.candy-mesh {
+  background-color: #ff99ee;
+  background-image: radial-gradient(
+      at 99% 6%,
+      hsla(195, 69%, 67%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 55% 88%, hsla(189, 74%, 69%, 1) 0px, transparent 50%),
+    radial-gradient(at 53% 27%, hsla(271, 78%, 63%, 1) 0px, transparent 50%),
+    radial-gradient(at 89% 89%, hsla(317, 89%, 70%, 1) 0px, transparent 50%),
+    radial-gradient(at 35% 44%, hsla(337, 92%, 61%, 1) 0px, transparent 50%);
+}
+
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-nextjs-scroll-focus-boundary] {
+  display: contents;
+}
