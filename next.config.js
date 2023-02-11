@@ -2,7 +2,8 @@
 const nextConfig = {
   experimental: {
     appDir: true,
+    serverComponentsExternalPackages: ["argon2"],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
