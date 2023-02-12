@@ -15,8 +15,6 @@ export const fetcher = async ({ url, method, body, json = true }: Fetcher) => {
     },
   });
 
-  console.log(res);
-
   if (!res.ok) {
     throw new Error(res.statusText);
   }
