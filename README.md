@@ -9,6 +9,7 @@
 - [x] Add dashboard with project & tasks lists fetched SSR
 - [x] Add single project page
 - [x] Add CSR modal (handle creating new project)
+- [ ] Error handling
 - [ ] Handle creating single task
 - [ ] Docker setup
 - [ ] Caching
