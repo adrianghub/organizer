@@ -1,16 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { jwtVerify } from "jose";
+import { verifyJWT } from "./utils/verifyJWT";
 const PUBLIC_FILE = /\.(.*)$/;
-
-// had to make this again here as the other one is in a file with argon which is not supported on edge runtimes
-const verifyJWT = async (jwt: string) => {
-  const { payload } = await jwtVerify(
-    jwt,
-    new TextEncoder().encode(process.env.JWT_SECRET)
-  );
-
-  return payload;
-};
 
 export default async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;

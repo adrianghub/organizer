@@ -6,8 +6,8 @@ export interface ButtonProps
 
 export const Button = ({
   children,
-  variant,
-  size,
+  variant = "primary",
+  size = "medium",
   className,
   ...props
 }: ButtonProps) => (
@@ -38,12 +38,12 @@ const buttonClasses = cva(
 
         secondary: [
           "bg-white",
-          "text-black",
-          "border-gray-400",
+          "text-violet-500",
+          "border-violet-500",
           "hover:bg-gray-100",
+          "focus:border-gray-100",
           "border-solid",
           "border-2",
-          "border-gray-800",
         ],
         text: ["bg-transparent", "text-black", "hover:bg-gray-100"],
       },

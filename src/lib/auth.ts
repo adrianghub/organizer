@@ -1,6 +1,9 @@
+import { verifyJWT } from "@/utils/verifyJWT";
 import { User } from "@prisma/client";
 import argon2 from "argon2";
-import { SignJWT, jwtVerify } from "jose";
+import { SignJWT } from "jose";
+import { ReadonlyRequestCookies } from "next/dist/server/app-render";
+import { RequestCookies } from "next/dist/server/web/spec-extension/cookies";
 import { db } from "./db";
 
 export const hashPassword = async (password: string) => {
@@ -26,12 +29,16 @@ export const createJWT = (user: User) => {
     .sign(new TextEncoder().encode(process.env.JWT_SECRET));
 };
 
-export const getUserFromCookie = async (cookies: {
-  get: (arg0: string | undefined) => any;
-}) => {
-  const jwt = cookies.get(process.env.COOKIE_NAME);
+export const getUserFromCookie = async (
+  cookies: RequestCookies | ReadonlyRequestCookies
+) => {
+  const jwt = cookies.get(process.env.COOKIE_NAME as string);
 
-  const { id } = await validateJWT(jwt.value);
+  if (!jwt) {
+    return null;
+  }
+
+  const { id } = await verifyJWT(jwt.value);
 
   const user = await db.user.findUnique({
     where: {
@@ -40,13 +47,4 @@ export const getUserFromCookie = async (cookies: {
   });
 
   return user;
-};
-
-const validateJWT = async (jwt: string) => {
-  const { payload } = await jwtVerify(
-    jwt,
-    new TextEncoder().encode(process.env.JWT_SECRET)
-  );
-
-  return payload.payload as { id: string; email: string };
 };

@@ -1,5 +1,5 @@
 import { fetcher } from "@/utils/fetcher";
-import { User } from "@prisma/client";
+import { Project, User } from "@prisma/client";
 
 export const register = (user: Partial<User>) => {
   return fetcher({
@@ -14,5 +14,20 @@ export const signin = (user: Partial<User>) => {
     url: "/api/signin",
     method: "POST",
     body: user,
+  });
+};
+
+export const logout = () => {
+  return fetcher({
+    url: "/api/logout",
+    method: "POST",
+  });
+};
+
+export const createNewProject = async (name: string) => {
+  return fetcher({
+    url: "/api/projects",
+    method: "POST",
+    body: { name },
   });
 };

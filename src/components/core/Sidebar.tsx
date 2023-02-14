@@ -1,4 +1,5 @@
 import { Card } from "../shared/Card";
+import { Logout } from "./Logout";
 import { SidebarLink } from "./SidebarLink";
 
 const links = [
@@ -23,6 +24,9 @@ const Sidebar = () => {
       {links.map((link) => (
         <SidebarLink key={link.href} link={link} />
       ))}
+      <div className="w-full flex justify-center items-center">
+        <Logout />
+      </div>
     </Card>
   );
 };

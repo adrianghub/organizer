@@ -1,9 +1,8 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { serialize } from "cookie";
 import { User } from "@prisma/client";
 import { db } from "@/lib/db";
-import { comparePassword, createJWT, hashPassword } from "@/lib/auth";
+import { comparePassword, createJWT } from "@/lib/auth";
 
 export default async function handler(
   req: NextApiRequest,
